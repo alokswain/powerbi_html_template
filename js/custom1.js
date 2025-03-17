@@ -1,8 +1,8 @@
 window.addEventListener('load', (event) => {
   document.getElementById('bi_value').addEventListener('change', goToTab);
+  document.getElementById('bi_value').addEventListener('keyup', goToTab);
   function goToTab() {
     const inputValue = this.value;
-    var links = document.getElementById('pills-tab');
     switch (inputValue) {
       case '1':
         document.getElementById('bi_txt').innerHTML = inputValue;
