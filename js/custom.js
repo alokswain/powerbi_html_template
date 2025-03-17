@@ -42,16 +42,19 @@
       var links = document.getElementById('pills-tab');
       switch (inputValue) {
         case '1':
-          links.children[0].children[0].click();
+          alert(1);
+          // links.children[0].children[0].click();
           break;
         case '2':
-          links.children[1].children[0].click();
+          alert(2);
+          // links.children[1].children[0].click();
           break;
         case '3':
-          links.children[2].children[0].click();
+          alert(3);
+          // links.children[2].children[0].click();
           break;
         default:
-          console.log(`Sorry, we are out of ${expr}.`);
+          console.log('Default');
       }
     }
   });
