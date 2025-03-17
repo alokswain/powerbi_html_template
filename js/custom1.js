@@ -1,15 +1,4 @@
-document.getElementById('bi_value').addEventListener('change', function(){
-  setTimeout(function(){
-    goToTab()
-  }, 3000);
-});
-document.getElementById('bi_value').addEventListener('keyup', function(){
-  goToTab();
-});
-
-// setTimeout(function(){
-    goToTab()
-  // }, 3000);
+goToTab()
 
 function goToTab() {
         var inputValue = document.getElementById('bi_value').value;
