@@ -7,9 +7,9 @@ document.getElementById('bi_value').addEventListener('keyup', function(){
   goToTab();
 });
 
-setTimeout(function(){
+// setTimeout(function(){
     goToTab()
-  }, 3000);
+  // }, 3000);
 
 function goToTab() {
         var inputValue = document.getElementById('bi_value').value;
