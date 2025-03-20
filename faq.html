@@ -929,6 +929,131 @@ button:focus:not(:focus-visible) {
                 height: 100%;
                 min-height: 200px;
             }
+            /*css for hamburger menu*/
+        #menu-toggle {
+            display: none;
+        }
+
+        .hamburger-container {
+            top: 20px;
+            left: 20px;
+            z-index: 200;
+        }
+
+        .hamburger {
+            width: 50px;
+            height: 50px;
+            background: #666;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        }
+
+        .hamburger-line {
+            width: 24px;
+            height: 3px;
+            background: #fff;
+            transition: all 0.3s;
+        }
+
+        .dropdown-menu-custom {
+            position: fixed;
+            top: -400px;
+            width: 220px;
+            background: #f5f5f5;
+            border-radius: 0 0 15px 15px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+            overflow: hidden;
+            box-shadow: 2px 5px 15px rgba(0,0,0,0.1);
+        }
+
+        #menu-toggle:checked ~ .dropdown-menu-custom {
+            top: 90px;
+        }
+
+        #menu-toggle:checked + .hamburger-container .hamburger {
+            transform: rotate(90deg);
+            background: #444;
+        }
+
+        #menu-toggle:checked + .hamburger-container .hamburger-line:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        #menu-toggle:checked + .hamburger-container .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        #menu-toggle:checked + .hamburger-container .hamburger-line:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+        .menu {
+            position: relative;
+            padding: 25px 0;
+            list-style: none;
+        }
+
+        .slider {
+            position: absolute;
+            left: 10px;
+            width: 200px;
+            height: 40px;
+            background: rgba(52, 152, 219, 0.2);
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            z-index: 0;
+        }
+
+        .menu-item {
+            position: relative;
+            padding: 15px 30px;
+            margin: 10px;
+            color: #333;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            text-decoration: none;
+            display: block;
+            border-radius: 20px;
+            z-index: 1;
+            transition: color 0.3s;
+        }
+
+        .menu-item:nth-child(1):hover ~ .slider {
+            opacity: 1;
+            top: 40px;
+        }
+
+        .menu-item:nth-child(2):hover ~ .slider {
+            opacity: 1;
+            top: 100px;
+        }
+
+        .menu-item:nth-child(3):hover ~ .slider {
+            opacity: 1;
+            top: 165px;
+        }
+
+        .menu-item:nth-child(4):hover ~ .slider {
+            opacity: 1;
+            top: 225px;
+        }
+
+        .menu-item:nth-child(5):hover ~ .slider {
+            opacity: 1;
+            top: 290px;
+        }
+
+        .menu-item:hover {
+            color: #2c3e50;
+            font-weight: bold;
+        }
         </style>
     </head>
     <body>
@@ -976,10 +1101,26 @@ button:focus:not(:focus-visible) {
                             </li>
                         </ul>
 
-                        <div class='d-none d-lg-block'>
-                            <a href='sign-in.html' class='bi-person custom-icon me-3'></a>
-
-                            <a href='product-detail.html' class='bi-bag custom-icon'></a>
+                        <div class='d-none d-lg-block' style="margin: 0;padding: 0;box-sizing: border-box;position: relative;">
+                          <input type="checkbox" id="menu-toggle">
+                          <label for="menu-toggle" class="hamburger-container">
+                              <div class="hamburger">
+                                  <span class="hamburger-line"></span>
+                                  <span class="hamburger-line"></span>
+                                  <span class="hamburger-line"></span>
+                              </div>
+                          </label>
+                      
+                          <nav class="dropdown-menu-custom">
+                              <div class="menu">
+                                  <a href="#" class="menu-item">Menu Item 1</a>
+                                  <a href="#" class="menu-item">Menu Item 2</a>
+                                  <a href="#" class="menu-item">Menu Item 3</a>
+                                  <a href="#" class="menu-item">Menu Item 4</a>
+                                  <a href="#" class="menu-item">Menu Item 5</a>
+                                  <div class="slider"></div>
+                              </div>
+                          </nav>
                         </div>
                     </div>
                 </div>
