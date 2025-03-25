@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>左侧滑动导航</title>
+    <style>
+
+        /* 隐藏复选框 */
+        #menu-toggle {
+            display: none;
+        }
+
+        /* 汉堡按钮容器 */
+        .hamburger-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 200;
+        }
+
+        /* 汉堡按钮样式 */
+        .hamburger {
+            width: 50px;
+            height: 50px;
+            background: #666;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        }
+
+        .hamburger-line {
+            width: 24px;
+            height: 3px;
+            background: #fff;
+            transition: all 0.3s;
+        }
+
+        /* 下拉菜单容器 */
+        .dropdown-menu {
+            position: fixed;
+            top: -400px;
+            left: 20px;
+            width: 220px;
+            background: #f5f5f5;
+            border-radius: 0 0 15px 15px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+            overflow: hidden;
+            box-shadow: 2px 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* 菜单展开动画 */
+        #menu-toggle:checked ~ .dropdown-menu {
+            top: 90px;
+        }
+
+        /* 汉堡按钮动画 */
+        #menu-toggle:checked + .hamburger-container .hamburger {
+            transform: rotate(90deg);
+            background: #444;
+        }
+
+        #menu-toggle:checked + .hamburger-container .hamburger-line:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        #menu-toggle:checked + .hamburger-container .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        #menu-toggle:checked + .hamburger-container .hamburger-line:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* 菜单项容器 */
+        .menu {
+            position: relative;
+            padding: 25px 0;
+            list-style: none;
+        }
+
+        /* 滑动指示条（改为实际元素） */
+        .slider {
+            position: absolute;
+            left: 10px;
+            width: 200px;
+            height: 40px;
+            background: rgba(52, 152, 219, 0.2);
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            z-index: 0;
+        }
+
+        /* 菜单项样式 */
+        .menu-item {
+            position: relative;
+            padding: 15px 30px;
+            margin: 10px;
+            color: #333;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            text-decoration: none;
+            display: block;
+            border-radius: 20px;
+            z-index: 1;
+            transition: color 0.3s;
+        }
+
+        /* 修复后的悬停效果 */
+        .menu-item:nth-child(1):hover ~ .slider {
+            opacity: 1;
+            top: 40px;
+        }
+
+        .menu-item:nth-child(2):hover ~ .slider {
+            opacity: 1;
+            top: 100px;
+        }
+
+        .menu-item:nth-child(3):hover ~ .slider {
+            opacity: 1;
+            top: 165px;
+        }
+
+        .menu-item:nth-child(4):hover ~ .slider {
+            opacity: 1;
+            top: 225px;
+        }
+
+        .menu-item:nth-child(5):hover ~ .slider {
+            opacity: 1;
+            top: 290px;
+        }
+
+        .menu-item:hover {
+            color: #2c3e50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburger-container">
+        <div class="hamburger">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </div>
+    </label>
+
+    <nav class="dropdown-menu">
+        <div class="menu">
+            <a href="#" class="menu-item">首页</a>
+            <a href="#" class="menu-item">关于我们</a>
+            <a href="#" class="menu-item">服务项目</a>
+            <a href="#" class="menu-item">产品展示</a>
+            <a href="#" class="menu-item">联系我们</a>
+            <!-- 新增滑动条元素 -->
+            <div class="slider"></div>
+        </div>
+    </nav>
+</body>
+</html>
